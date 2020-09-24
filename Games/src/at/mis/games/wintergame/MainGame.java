@@ -1,10 +1,16 @@
 package at.mis.games.wintergame;
 
 import org.newdawn.slick.*;
-import org.newdawn.slick.tests.AnimationTest;
+import at.mis.games.wintergame.actors.HTLCircle;
+import at.mis.games.wintergame.actors.HTLOval;
+import at.mis.games.wintergame.actors.HTLRectangle;
+
 
 public class MainGame extends BasicGame {
-    private int x, y;
+
+    public HTLRectangle rect1;
+    public HTLOval oval1;
+    public HTLCircle circle1;
 
     public MainGame(String title) {
         super(title);
@@ -12,21 +18,23 @@ public class MainGame extends BasicGame {
 
     @Override
     public void init(GameContainer gameContainer) throws SlickException {
-        // gezeichnet
-        this.x = 100;
-        this.y = 100;
+        this.rect1 = new HTLRectangle(10,10,100,100);
+        this.oval1 = new HTLOval(10,10,30,30);
+        this.circle1 = new HTLCircle(10,10, 20,20);
     }
 
     @Override
-    public void update(GameContainer gameContainer, int i) throws SlickException {
-        // 1 mal aufgerufen
-        this.x++;
+    public void update(GameContainer gameContainer, int delta) throws SlickException {
+        rect1.update(gameContainer, delta);
+        oval1.update(gameContainer, delta);
+        circle1.update(gameContainer, delta);
     }
 
     @Override
     public void render(GameContainer gameContainer, Graphics graphics) throws SlickException {
-        // delta = zeit seit dem letzten Aufruf
-        graphics.drawRect(this.x, this.y, 50, 50);
+        rect1.render(graphics);
+        oval1.render(graphics);
+        circle1.render(graphics);
     }
 
     public static void main(String[] argv) {
