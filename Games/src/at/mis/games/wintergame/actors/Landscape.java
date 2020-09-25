@@ -47,10 +47,6 @@ public class Landscape extends BasicGame {
 		this.player1 = new Player(20,20);
 		this.actors.add(player1);
 		
-		HTLCircle c1 = new HTLCircle(0, 0, 50, 50);
-		this.actors.add(c1);	
-		player1.addPartner(c1.getShape());
-		
 	
 	}
 

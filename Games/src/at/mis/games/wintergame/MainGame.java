@@ -4,7 +4,6 @@ import at.mis.games.wintergame.actors.Actor;
 import org.newdawn.slick.*;
 import at.mis.games.wintergame.actors.HTLCircle;
 import at.mis.games.wintergame.actors.HTLOval;
-import at.mis.games.wintergame.actors.HTLRectangle;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +12,7 @@ import java.util.List;
 public class MainGame extends BasicGame {
 
     private List<Actor> actors;
+    private HTLRectangle r1;
 
     public MainGame(String title) {
         super(title);
@@ -21,10 +21,17 @@ public class MainGame extends BasicGame {
     @Override
     public void init(GameContainer gameContainer) throws SlickException {
         this.actors = new ArrayList<>();
+        MoveStrategy mr1 = new MoveRight(0,0,0.3f);
+        MoveStrategy ml1 = new MoveLeft(500,0,0.1f);
 
-        this.actors.add(new HTLRectangle(10,10,100,100));
+        HTLCircle c1 = new HTLCircle(mr1);
+        HTLCircle c2 = new HTLCircle(ml1);
+        HTLRectangle r1 = new HTLRectangle(ml1);
+
         this.actors.add(new HTLOval(10,10,30,30));
-        this.actors.add(new HTLCircle(10,10, 20,20));
+        this.actors.add(c1);
+        this.actors.add(c2);
+        this.actors.add(r1);
     }
 
     @Override
